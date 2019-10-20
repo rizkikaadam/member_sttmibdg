@@ -1,0 +1,231 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <!--IE Compatibility modes-->
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <!--Mobile first-->
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
+    <title>Login Admin STTMI Bandung</title>
+
+    <meta name="description" content="Free Admin Template Based On Twitter Bootstrap 3.x">
+    <meta name="author" content="">
+
+    <meta name="msapplication-TileColor" content="#5bc0de" />
+    <meta name="msapplication-TileImage" content="assets/img/metis-tile.png" />
+
+    <!-- Bootstrap -->
+    <link rel="stylesheet" href="<?php echo base_url(); ?>assets/lib/bootstrap/css/bootstrap.css">
+
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="<?php echo base_url(); ?>assets/lib/font-awesome/css/font-awesome.css">
+
+    <!-- Metis core stylesheet -->
+    <link rel="stylesheet" href="<?php echo base_url(); ?>assets/css/main.css">
+
+    <!-- metisMenu stylesheet -->
+    <link rel="stylesheet" href="<?php echo base_url(); ?>assets/lib/metismenu/metisMenu.css">
+
+    <!-- animate.css stylesheet -->
+    <link rel="stylesheet" href="<?php echo base_url(); ?>assets/lib/animate.css/animate.css">
+
+
+    <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
+    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+    <!--[if lt IE 9]>
+        <script src="https://oss.maxcdn.com/html5shiv/3.7.3/html5shiv.min.js"></script>
+        <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
+    <![endif]-->
+
+</head>
+
+<body class="login">
+
+<div id="content">
+    <div class="outer">
+        <div class="inner bg-light lter">
+            <!-- table -->
+            <div class="row">
+              <div class="col-lg-12">
+                    <div class="box">
+                        <header>
+                            <div class="icons"><i class="glyphicon glyphicon-list"></i></div>
+                            <h5><i class="glyphicon glyphicon-user"></i>&nbsp;Edit Data Pengajar</h5>
+                        </header>
+                        <div id="collapse4" class="body">
+                          <?php
+                          foreach ($dosen->result() as $data_dosen) {
+                           ?>
+                          <form class="form-horizontal" method="post" action="<?= base_url() ?>Pengajar/editpengajar_proses" enctype="multipart/form-data">
+
+                            <div class="form-group">
+                                <label for="text1" class="control-label col-lg-4"><h2><i class="glyphicon glyphicon-user"></i>&nbsp;Profil Dosen</h2></label>
+                            </div>
+                            <div class="form-group">
+                                <label for="text1" class="control-label col-lg-4">Nama</label>
+
+                                <div class="col-lg-6">
+                                    <input type="text" id="text1" placeholder="Nama"  name="dosen_name" class="form-control" value="<?php echo "$data_dosen->dosen_nama"; ?>" required="required">
+                                </div>
+                            </div>
+                            <!-- /.form-group -->
+
+                            <div class="form-group">
+                                <label for="text1" class="control-label col-lg-4">Tempat Lahir</label>
+
+                                <div class="col-lg-6">
+                                    <input type="text" id="text1" placeholder="Tempat Lahir" name="tmpt_lahir" class="form-control" value="<?php echo "$data_dosen->tmpt_lahir"; ?>" required="required">
+                                </div>
+                            </div>
+                            <!-- /.form-group -->
+
+                            <div class="form-group">
+                                <label for="text1" class="control-label col-lg-4">Tanggal Lahir</label>
+
+                                <div class="col-lg-6">
+                                    <input class="form-control" type="date"  name="tgl_lahir" value="<?php echo "$data_dosen->tgl_lahir"; ?>" required="required">
+                                </div>
+                            </div>
+                            <!-- /.form-group -->
+
+                            <div class="form-group">
+                                <label for="text1" class="control-label col-lg-4">Pendidikan Terakhir</label>
+
+                                <div class="col-lg-6">
+                                    <input type="text" id="text1" placeholder="Pendidikan Terakhir"  name="pendidikan" class="form-control" value="<?php echo "$data_dosen->pendidikan"; ?>" required="required">
+                                </div>
+                            </div>
+                            <!-- /.form-group -->
+
+                            <div class="form-group">
+                                <label for="text1" class="control-label col-lg-4">Mengajar</label>
+
+                                <div class="col-lg-6">
+                                    <textarea class="form-control" name="mengajar" required="required"><?php echo "$data_dosen->mengajar"; ?></textarea>
+                                    <span class="help-block">Pisahkan Matakuliah dengan tanda koma ",".</span>
+                                </div>
+                            </div>
+                            <!-- /.form-group -->
+
+                            <div class="form-group">
+                                <label for="text1" class="control-label col-lg-4">Status</label>
+
+                                <div class="col-lg-6">
+                                    <select class="form-control" name="status" required="required">
+                                        <option value="<?php echo "$data_dosen->status"; ?>">Dosen <?php echo "$data_dosen->status"; ?></option>
+                                        <option value="tetap">Dosen Tetap</option>
+                                        <option value="luar biasa">Dosen Luar Biasa</option>
+                                        <option value="tidak aktif">Tidak Aktif</option>
+                                    </select>
+                                </div>
+                            </div>
+                            <!-- /.form-group -->
+
+                              <div class="form-group">
+                                  <label for="text1" class="control-label col-lg-4">Email</label>
+
+                                  <div class="col-lg-6">
+                                      <input type="text" id="text1" placeholder="Email" name="email" class="form-control" value="<?php echo "$data_dosen->email"; ?>" required="required">
+                                  </div>
+                              </div>
+                              <hr>
+                              <div class="form-group">
+                                  <label for="text1" class="control-label col-lg-4"><h2><i class="glyphicon glyphicon-user"></i>&nbsp;Akun Dosen</h2></label>
+                              </div>
+                              <div class="form-group">
+                                  <label for="text1" class="control-label col-lg-4">Username</label>
+                                  <div class="col-lg-6">
+                                      <input type="text" id="text1" placeholder="username"  name="password" class="form-control" value="<?php echo "$data_dosen->username"; ?>" required="required">
+                                  </div>
+                              </div>
+                              <div class="form-group">
+                                  <label for="text1" class="control-label col-lg-4">Pasword</label>
+                                  <div class="col-lg-6">
+                                      <input type="password" id="text1" placeholder="Password" readonly  name="password" class="form-control" value="<?php echo "$data_dosen->password"; ?>" required="required">
+                                  </div>
+                              </div>
+                              <hr>
+                              <div class="form-group">
+                                <label for="text1" class="control-label col-lg-4"></label>
+                                  <div class="col-lg-6">
+                                    <input type="hidden" name="dosen_id"  id="text1" placeholder="Isi Banyak Mahasiswa" class="form-control" value="<?php echo "$data_dosen->dosen_id";?>">
+                                      <button type="submit" name="btn simpan" class="btn btn-primary">Simpan</button>
+                                  </div>
+                              </div>
+                          </form>
+                          <?php }//akhir menampilkan edit data ?>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- /.inner -->
+    </div>
+    <!-- /.outer -->
+</div>
+<!-- /#content -->
+    <div id="right" class="bg-light lter">
+        <div class="alert alert-danger">
+            <button type="button" class="close" data-dismiss="alert">&times;</button>
+            <strong>Warning!</strong> Best check yo self, you're not looking too good.
+        </div>
+        <!-- .well well-small -->
+        <div class="well well-small dark">
+            <ul class="list-unstyled">
+                <li>Visitor <span class="inlinesparkline pull-right">1,4,4,7,5,9,10</span></li>
+                <li>Online Visitor <span class="dynamicsparkline pull-right">Loading..</span></li>
+                <li>Popularity <span class="dynamicbar pull-right">Loading..</span></li>
+                <li>New Users <span class="inlinebar pull-right">1,3,4,5,3,5</span></li>
+            </ul>
+        </div>
+        <!-- /.well well-small -->
+        <!-- .well well-small -->
+        <div class="well well-small dark">
+            <button class="btn btn-block">Default</button>
+            <button class="btn btn-primary btn-block">Primary</button>
+            <button class="btn btn-info btn-block">Info</button>
+            <button class="btn btn-success btn-block">Success</button>
+            <button class="btn btn-danger btn-block">Danger</button>
+            <button class="btn btn-warning btn-block">Warning</button>
+            <button class="btn btn-inverse btn-block">Inverse</button>
+            <button class="btn btn-metis-1 btn-block">btn-metis-1</button>
+            <button class="btn btn-metis-2 btn-block">btn-metis-2</button>
+            <button class="btn btn-metis-3 btn-block">btn-metis-3</button>
+            <button class="btn btn-metis-4 btn-block">btn-metis-4</button>
+            <button class="btn btn-metis-5 btn-block">btn-metis-5</button>
+            <button class="btn btn-metis-6 btn-block">btn-metis-6</button>
+        </div>
+        <!-- /.well well-small -->
+        <!-- .well well-small -->
+        <div class="well well-small dark">
+            <span>Default</span><span class="pull-right"><small>20%</small></span>
+
+            <div class="progress xs">
+                <div class="progress-bar progress-bar-info" style="width: 20%"></div>
+            </div>
+            <span>Success</span><span class="pull-right"><small>40%</small></span>
+
+            <div class="progress xs">
+                <div class="progress-bar progress-bar-success" style="width: 40%"></div>
+            </div>
+            <span>warning</span><span class="pull-right"><small>60%</small></span>
+
+            <div class="progress xs">
+                <div class="progress-bar progress-bar-warning" style="width: 60%"></div>
+            </div>
+            <span>Danger</span><span class="pull-right"><small>80%</small></span>
+
+            <div class="progress xs">
+                <div class="progress-bar progress-bar-danger" style="width: 80%"></div>
+            </div>
+        </div>                    </div>
+    <!-- /#right -->
+</div>
+<!-- /#wrap -->
+<!-- /#wrap -->
+<footer class="Footer bg-dark dker">
+<p>2016 &copy; STTMI Bandung Powered By Ukuranmu Studio</p>
+</footer>
+<!-- /#footer -->
